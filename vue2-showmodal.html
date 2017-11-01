@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Show modal test</title>
-      <link rel="stylesheet" href="http://bulma.io/css/bulma-docs.css?v=20171009-1504">
-
+  <link rel="stylesheet" href="http://bulma.io/css/bulma-docs.css?v=20171009-1504">
 </head>
 <body>
 
   <div id="root">
+    <p>Vue modal:</p><br>
     <button class="button is-success" @click="showModal = true">Show modal</button>
     <button class="button is-danger" @click="showModalnext = true">Another modal</button>
     
@@ -24,7 +24,7 @@
     <b-modal v-show="showModalnext" @close="showModalnext = false">
             <p>Curabitur accumsan turpis pharetra augue tincidunt blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
     </b-modal>
-    <hr>
+   
     <!--Or use DOM drectly without template-->
     <button class="button is-primary" @click="showModalimg = true">Launch image modal</button>
     <div class="modal is-active" v-show="showModalimg">
@@ -35,11 +35,36 @@
             </p>
         </div>
         <button class="modal-close is-large" aria-label="close" @click="showModalimg = false"></button>
-    </div>
- 
-    
-    
+    </div>       
   </div>
+  <hr>
+  
+  <!-- Or use pure CSS to showmodal -->
+  <p>CSS target:</p><br>
+  <p><a href="#id01" class="button is-info">CSS Target</a></p>
+  
+  <div id="id01" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <p class="image is-4by3">
+                <img src="http://bulma.io/images/placeholders/1280x960.png" alt="">
+            </p>
+        </div>
+        <a href="#"><button class="modal-close is-large" aria-label="close"></button></a>
+  </div>
+  <hr>
+  
+  <style>
+    	body {
+    		max-width: 960px;
+    		margin:0 auto;
+    	}
+    	div.modal:target {
+    		display: block;
+    	}
+  </style>
+
+  
    <script src="https://unpkg.com/vue@2.1.3/dist/vue.js"></script>
     <script>
     Vue.component('b-modal', {
